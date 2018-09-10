@@ -1,0 +1,254 @@
+import java.lang.Math;
+import java.util.Scanner;
+import java.util.Random;
+public class AdventureGame
+{
+    public AdventureGame(){}
+    Scanner sc = new Scanner(System.in);
+    Random dice = new Random();
+    String name;
+    int age;
+    double height;
+    int heightft;
+    int power;
+        
+    int action;
+        
+    String monsterNam;
+    int monsterLvl;
+    int monsterUp = 600;
+    int bargain;
+    int escape;
+
+    
+    public void introduction(){
+    
+        System.out.println("Enter your name: ");
+        name = sc.nextLine();
+        
+        System.out.println("What is your age: ");
+        age = sc.nextInt();
+        
+        System.out.println("What is your height (in cm): ");
+        height = sc.nextDouble();
+        
+        heightft = (int)Math.round(height*0.393701);
+        power = heightft*age;
+        
+        if (height == 69 || age == 69 || height == 420 || age == 420 || name == "Jeff" || name == "God")
+        {
+            power = 1000000000;
+            System.out.println("Amazing! Your power level is godlike!\nYou are too powerful to journey on this quest!");
+        }
+        
+        System.out.println("Your power level is: "+power);
+        
+        if (height >= 203 || age >= 100)
+        {
+            System.out.println("You lie...");
+            System.exit(0);
+        }
+    }
+    public void randomEncounter(){
+        while (power <= 18000)
+        {
+            while (power <= 6000)
+            {
+                //monsterNo = dice.nextInt(200);
+                //if (monsterNo <= 50)
+                //{
+                    //monsterNam = "Slime";
+                    String[] list = {"Slime", "Goblin", "Gnome", "Bat", "Mouse", "Rat", "Crow", "Troll"};
+                    int INDEXn = dice.nextInt(list.length);
+                    String monsterNam = (String) (list[INDEXn]);
+                    System.out.println("");
+
+                    monsterLvl = dice.nextInt(800) + monsterUp;
+                    System.out.println("A level "+monsterLvl+" "+monsterNam+" appears!");
+                    System.out.println("Do you fight (1), talk (2), or run away (3)?");
+                    action = sc.nextInt();
+                    System.out.println("");
+                    if (action == 1)
+                    {
+                        if (power>=monsterLvl)
+                        {
+                            System.out.println("You have defeated the "+monsterNam+"!");
+                            power = power + (monsterLvl)/3;
+                            System.out.println("Your power level is now "+power);
+                            monsterUp = monsterUp+500;
+                        }
+                        else
+                        {
+                            System.out.println("You are too weak!\nThe "+monsterNam+" has defeated you!");
+                            System.exit(0);
+                        }
+                    }
+                    else if (action == 2)
+                    {
+                            bargain = dice.nextInt(100);
+                            if (bargain <= 75)
+                            {
+                                System.out.println("You have talked your way out of fighting the "+monsterNam+"!");
+                                power = power + (monsterLvl)/6;
+                                System.out.println("Your power level is now "+power);
+                                monsterUp = monsterUp+250;
+                            }
+                            else if (bargain > 75)
+                            {
+                                System.out.println("The "+monsterNam+" did not accept your words!\nThe "+monsterNam+" has defeated you!"); 
+                                System.exit(0);
+                            }
+                    }
+                    else if (action == 3)
+                    {
+                            escape = dice.nextInt(100);
+                            if (escape <= 85)
+                            {
+                                System.out.println("You have escaped "+monsterNam+"!");
+                                System.out.println("Your power level is still "+power);
+                            }
+                            else if (escape > 85)
+                            {
+                                System.out.println("You couldn't escape!\nThe "+monsterNam+" has defeated you!");
+                                System.exit(0);
+                            }
+                    }
+                    else
+                    {
+                        System.out.println("Enter one of the possible answers");
+                  //  }
+                }
+            }
+            while (power <= 12000 && power > 6000)
+            {
+                    String[] list = {"Zombie", "Skeleton", "Orc", "Ghoul", "Centaur", "Knight", "Vampire", "Demon"};
+                    int INDEXn = dice.nextInt(list.length);
+                    String monsterNam = (String) (list[INDEXn]);
+                    System.out.println("");
+
+                    monsterLvl = dice.nextInt(800) + power - 400;
+                    System.out.println("A level "+monsterLvl+" "+monsterNam+" appears!");
+                    System.out.println("Do you fight (1), talk (2), or run away (3)?");
+                    action = sc.nextInt();
+                    System.out.println("");
+                    if (action == 1)
+                    {
+                        if (power>=monsterLvl)
+                        {
+                            System.out.println("You have defeated the "+monsterNam+"!");
+                            power = power + (monsterLvl)/4;
+                            System.out.println("Your power level is now "+power);
+                        }
+                        else
+                        {
+                            System.out.println("You are too weak!\nThe "+monsterNam+" has defeated you!");
+                            System.exit(0);
+                        }
+                    }
+                    else if (action == 2)
+                    {
+                            bargain = dice.nextInt(100);
+                            if (bargain <= 65)
+                            {
+                                System.out.println("You have talked your way out of fighting the "+monsterNam+"!");
+                                power = power + (monsterLvl)/8;
+                                System.out.println("Your power level is now "+power);
+                            }
+                            else if (bargain > 65)
+                            {
+                                System.out.println("The "+monsterNam+" did not accept your words!\nThe "+monsterNam+" has defeated you!");
+                                System.exit(0);
+                            }
+                    }
+                    else if (action == 3)
+                    {
+                            escape = dice.nextInt(100);
+                            if (escape <= 75)
+                            {
+                                System.out.println("You have escaped "+monsterNam+"!");
+                                System.out.println("Your power level is still "+power);
+                            }
+                            else if (escape > 75)
+                            {
+                                System.out.println("You couldn't escape!\nThe "+monsterNam+" has defeated you!");
+                                System.exit(0);
+                            }
+                    }
+                    else
+                    {
+                        System.out.println("Enter one of the possible answers");
+                  //  }
+                }
+            }
+            while (power <= 18000)
+            {
+                    String[] list = {"Minotaur", "Leviathan", "Dracula", "Werewolf", "Dragon", "Wyvern", "Sorcerer", "Devil"};
+                    int INDEXn = dice.nextInt(list.length);
+                    String monsterNam = (String) (list[INDEXn]);
+                    System.out.println("");
+
+                    monsterLvl = dice.nextInt(850) + power - 300;
+                    System.out.println("A level "+monsterLvl+" "+monsterNam+" appears!");
+                    System.out.println("Do you fight (1), talk (2), or run away (3)?");
+                    action = sc.nextInt();
+                    System.out.println("");
+                    if (action == 1)
+                    {
+                        if (power>=monsterLvl)
+                        {
+                            System.out.println("You have defeated the "+monsterNam+"!");
+                            power = power + (monsterLvl)/6;
+                            System.out.println("Your power level is now "+power);
+                        }
+                        else
+                        {
+                            System.out.println("You are too weak!\nThe "+monsterNam+" has defeated you!");
+                            System.exit(0);
+                        }
+                    }
+                    else if (action == 2)
+                    {
+                            bargain = dice.nextInt(100);
+                            if (bargain <= 55)
+                            {
+                                System.out.println("You have talked your way out of fighting the "+monsterNam+"!");
+                                power = power + (monsterLvl)/12;
+                                System.out.println("Your power level is now "+power);
+                            }
+                            else if (bargain > 55)
+                            {
+                                System.out.println("The "+monsterNam+" did not accept your words!\nThe "+monsterNam+" has defeated you!");
+                                System.exit(0);
+                            }
+                    }
+                    else if (action == 3)
+                    {
+                            escape = dice.nextInt(100);
+                            if (escape <= 65)
+                            {
+                                System.out.println("You have escaped "+monsterNam+"!");
+                                System.out.println("Your power level is still "+power);
+                            }
+                            else if (escape > 65)
+                            {
+                                System.out.println("You couldn't escape!\nThe "+monsterNam+" has defeated you!");
+                                System.exit(0);
+                            }
+                    }
+                    else
+                    {
+                        System.out.println("Enter one of the possible answers");
+                  //  }
+                }
+            }
+            if (power >= 18000)
+            {
+                System.out.println("");
+                System.out.println("Congratulations "+name+"!");
+                System.out.println("You have completed your quest!");
+                System.out.println("You can now rest at power level "+power+".");
+                System.out.println("However, you are still "+age+" years old, and "+height+" cm tall :)");
+            }
+        }
+    }
+}
