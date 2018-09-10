@@ -1,0 +1,11 @@
+import java.util.Random;
+public class Game
+{
+    public static void main()
+    {
+        AdventureGame ag = new AdventureGame();
+        Random dice = new Random();      
+        ag.introduction();
+        ag.randomEncounter();
+    }
+}
